@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:c="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+	<h:head>
+		<title>Exibir Clientes</title>
+		<meta charset="utf-8"></meta>
+		<meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"></link>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
+	</h:head>
+	<body>
+		<h:form>
+			<div class="dropdown" align="center">
+				<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Menu</button>
+				<div class="dropdown-menu">
+					<a class="dropdown-item" href="vendedores.xhtml">Cadastrar Vendedor</a> 
+					<a class="dropdown-item" href="cadastroCliente.xhtml">Cadastrar Clientes</a> 
+					<a class="dropdown-item" href="index.xhtml" >Pagina inicial</a>
+				</div>				
+			</div>
+			<br></br>
+			<div class="container">
+		    	<h5>#{clienteBean.listarClientesData(data)}</h5>
+			</div>
+			<br></br>
+			<div align="center">
+				<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Registrar Pagamento</button>
+					
+				<!-- The Modal -->
+				<div class="modal" id="myModal">
+					<div class="modal-dialog">
+						<div class="modal-content">
+		
+							<!-- Modal Header -->
+							<div class="modal-header">
+								<h4 class="modal-title">Registar Pagamento</h4>
+								<button type="button" class="close" data-dismiss="modal"></button>
+							</div>
+		
+							<!-- Modal body -->
+							<div class="modal-body">
+								<label for="idCliente">Digite o ID do Cliente</label>
+								<h:inputText class="form-control" id="idCliente" value="#{idCliente}" required="true" />
+								<label for="pago">Digite o valor pago</label>
+								<h:inputText class="form-control" id="pago" value="#{pago}" onkeypress="$(this).mask('000.00');" required="true" />
+								<label for="data">Digite a proxima data de pagamento</label>
+								<h:inputText class="form-control" id="data" value="#{dataCobranca}" onkeypress="$(this).mask('00/00/0000');" required="true" />
+							</div>
+		
+							<!-- Modal footer -->
+							<div class="modal-footer">
+								<h:commandButton class="btn btn-primary" value="Salvar" action="atualizaPagamento" />
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</h:form>
+	</body>
+</html>
